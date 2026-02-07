@@ -145,5 +145,31 @@ import '../styles/luxury-effects.css';
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   
   <slot name="scripts" />
+  
+  <!-- Intersection Observer for reveal animations -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up, .reveal');
+      
+      if (revealElements.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+        
+        revealElements.forEach(el => observer.observe(el));
+      } else {
+        // Fallback: just reveal all elements
+        revealElements.forEach(el => el.classList.add('revealed'));
+      }
+    });
+  </script>
 </body>
 </html>
