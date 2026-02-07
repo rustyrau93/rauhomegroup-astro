@@ -216,4 +216,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .contact-link:hover {
     color: var(--color-gold);
   }
+  
+  /* Fix scroll animation glitch on sellers hero */
+  .sellers-hero .hero-background {
+    position: absolute;
+    will-change: auto;
+    transform: none !important;
+  }
+  
+  .sellers-hero .hero-image {
+    will-change: auto;
+    transform: none !important;
+    backface-visibility: hidden;
+  }
+  
+  .sellers-hero .hero-content {
+    will-change: auto;
+    transform: none !important;
+  }
+  
+  .sellers-hero .hero-overlay {
+    will-change: auto;
+  }
 </style>
