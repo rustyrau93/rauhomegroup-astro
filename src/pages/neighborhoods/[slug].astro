@@ -1,0 +1,446 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const neighborhoods = await getCollection('neighborhoods', ({ data }) => !data.draft);
+  return neighborhoods.map(neighborhood => ({
+    params: { slug: neighborhood.data.slug },
+    props: { neighborhood },
+  }));
+}
+
+const { neighborhood } = Astro.props;
+const { Content, headings } = await render(neighborhood);
+const { data } = neighborhood;
+---
+
+<BaseLayout 
+  title={`${data.title} Real Estate & Homes for Sale`}
+  description={data.metaDescription || data.description}
+>
+  <!-- Hero Section -->
+  <section class="neighborhood-hero" style={`background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${data.heroImage});`}>
+    <div class="hero-content">
+      <h1>{data.title}, San Diego</h1>
+      <p>{data.description}</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="neighborhood-page">
+    <div class="container">
+      <div class="neighborhood-grid">
+        <!-- Main Content -->
+        <article class="neighborhood-main">
+          <!-- Quick Stats -->
+          {(data.medianPrice || data.avgPricePerSqft) && (
+            <div class="stats-grid">
+              {data.medianPrice && (
+                <div class="stat-card">
+                  <h3>{data.medianPrice}</h3>
+                  <p>Median Home Price</p>
+                </div>
+              )}
+              {data.avgPricePerSqft && (
+                <div class="stat-card">
+                  <h3>{data.avgPricePerSqft}</h3>
+                  <p>Price per Sq Ft</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          <!-- Markdown Content -->
+          <div class="content-body">
+            <Content />
+          </div>
+
+          <!-- Pros Section -->
+          {data.highlights && (
+            <div class="highlights-section">
+              <h2>Why {data.title}?</h2>
+              <ul class="highlights-list">
+                {data.highlights.map(highlight => (
+                  <li><i class="fas fa-check-circle"></i> {highlight}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="neighborhood-sidebar">
+          <!-- Contact Card -->
+          <div class="sidebar-card contact-card">
+            <img src="/images/rusty-headshot.jpg" alt="Rusty Rau" class="agent-photo" />
+            <h3>Interested in {data.title}?</h3>
+            <p>Let me help you find your perfect home in this community.</p>
+            <a href="/contact" class="cta-button">Contact Rusty</a>
+            <a href="tel:+18582044692" class="phone-link"><i class="fas fa-phone"></i> (858) 204-4692</a>
+          </div>
+
+          <!-- Quick Facts -->
+          <div class="sidebar-card">
+            <h4>Quick Facts</h4>
+            <ul class="quick-facts">
+              <li><strong>City:</strong> {data.city}</li>
+              {data.region && <li><strong>Region:</strong> {data.region}</li>}
+              {data.zipCodes && <li><strong>Zip Codes:</strong> {data.zipCodes.join(', ')}</li>}
+              {data.priceRange && (
+                <li><strong>Price Range:</strong> ${(data.priceRange.min / 1000).toFixed(0)}K - ${(data.priceRange.max / 1000000).toFixed(1)}M</li>
+              )}
+            </ul>
+          </div>
+
+          <!-- Home Styles -->
+          {data.homeStyles && (
+            <div class="sidebar-card">
+              <h4>Home Styles</h4>
+              <ul class="tags-list">
+                {data.homeStyles.map(style => (
+                  <li class="tag">{style}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Schools -->
+          {data.schools && data.schools.length > 0 && (
+            <div class="sidebar-card">
+              <h4>Top Schools</h4>
+              <ul class="schools-list">
+                {data.schools.map(school => (
+                  <li>
+                    <span class="school-name">{school.name}</span>
+                    {school.rating && <span class="school-rating">{school.rating}/10</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Amenities -->
+          {data.amenities && (
+            <div class="sidebar-card">
+              <h4>Local Amenities</h4>
+              <ul class="amenities-list">
+                {data.amenities.slice(0, 6).map(amenity => (
+                  <li><i class="fas fa-map-marker-alt"></i> {amenity}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container narrow">
+      <h2>Ready to Explore {data.title}?</h2>
+      <p>I know every street, every school, every coffee shop in this neighborhood. Let me show you around and help you find your perfect home.</p>
+      <a href="/contact" class="cta-button">Schedule a Tour</a>
+    </div>
+  </section>
+
+  <!-- Back to All -->
+  <div class="back-link-container">
+    <a href="/neighborhoods" class="back-link"><i class="fas fa-arrow-left"></i> Back to All Neighborhoods</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .neighborhood-hero {
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 6rem 2rem 4rem;
+  }
+  
+  .neighborhood-hero h1 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .neighborhood-hero p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+  
+  .neighborhood-page {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .neighborhood-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  @media (max-width: 1024px) {
+    .neighborhood-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .neighborhood-sidebar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-card {
+    background: var(--color-off-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border-left: 4px solid var(--color-gold);
+  }
+  
+  .stat-card h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-gold);
+    margin: 0 0 0.25rem;
+  }
+  
+  .stat-card p {
+    color: var(--color-gray);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  
+  .content-body {
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+  
+  .content-body h2 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--color-primary);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-gold);
+  }
+  
+  .content-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin: 1.5rem 0 0.75rem;
+  }
+  
+  .content-body p {
+    margin-bottom: 1rem;
+  }
+  
+  .content-body ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  
+  .content-body li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .highlights-section {
+    background: var(--color-off-white);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+  
+  .highlights-section h2 {
+    font-family: var(--font-display);
+    margin: 0 0 1rem;
+  }
+  
+  .highlights-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  
+  .highlights-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .highlights-list i {
+    color: var(--color-gold);
+  }
+  
+  /* Sidebar */
+  .sidebar-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-light-gray);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sidebar-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+    color: var(--color-primary);
+  }
+  
+  .contact-card {
+    text-align: center;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+  }
+  
+  .agent-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 3px solid var(--color-gold);
+  }
+  
+  .contact-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-card p {
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .contact-card .cta-button {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .phone-link {
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .quick-facts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .quick-facts li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-light-gray);
+  }
+  
+  .quick-facts li:last-child {
+    border-bottom: none;
+  }
+  
+  .tags-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag {
+    background: rgba(201, 168, 105, 0.1);
+    color: var(--color-gold);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+  }
+  
+  .schools-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .schools-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-light-gray);
+  }
+  
+  .schools-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .school-rating {
+    background: var(--color-gold);
+    color: var(--color-primary);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 4px;
+  }
+  
+  .amenities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .amenities-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .amenities-list i {
+    color: var(--color-gold);
+    width: 16px;
+  }
+  
+  .back-link-container {
+    text-align: center;
+    padding: 2rem 0 4rem;
+  }
+  
+  .back-link {
+    color: var(--color-gray);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-fast);
+  }
+  
+  .back-link:hover {
+    color: var(--color-gold);
+  }
+</style>

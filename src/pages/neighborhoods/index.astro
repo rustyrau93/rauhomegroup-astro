@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all neighborhoods
+const neighborhoods = await getCollection('neighborhoods', ({ data }) => !data.draft);
+
+// Group by region
+const regions = {
+  'Coastal': ['la-jolla', 'del-mar', 'encinitas', 'solana-beach', 'carlsbad', 'oceanside', 'coronado', 'point-loma', 'pacific-beach', 'ocean-beach', 'mission-beach', 'imperial-beach'],
+  'North County': ['carmel-valley', 'rancho-bernardo', 'poway', 'scripps-ranch', '4s-ranch', 'rancho-santa-fe', 'san-marcos', 'escondido', 'vista'],
+  'Urban San Diego': ['downtown-gaslamp', 'hillcrest', 'north-park', 'south-park', 'mission-hills', 'kensington', 'normal-heights', 'university-heights'],
+  'East County': ['la-mesa', 'el-cajon', 'santee', 'alpine', 'rancho-penasquitos', 'mira-mesa', 'clairemont'],
+  'South Bay': ['chula-vista', 'eastlake-chula-vista', 'national-city'],
+};
+
+// Organize neighborhoods by region
+const neighborhoodsByRegion: Record<string, typeof neighborhoods> = {};
+for (const [region, slugs] of Object.entries(regions)) {
+  neighborhoodsByRegion[region] = neighborhoods.filter(n => slugs.includes(n.data.slug));
+}
+
+// Region icons
+const regionIcons: Record<string, string> = {
+  'Coastal': 'fas fa-umbrella-beach',
+  'North County': 'fas fa-mountain',
+  'Urban San Diego': 'fas fa-city',
+  'East County': 'fas fa-tree',
+  'South Bay': 'fas fa-sun',
+};
+---
+
+<BaseLayout 
+  title="San Diego Neighborhoods"
+  description="Explore San Diego neighborhoods with Rusty Rau. Detailed guides to La Jolla, Del Mar, Encinitas, North Park, and more. Find your perfect San Diego community."
+>
+  <!-- Hero Section -->
+  <section class="page-hero neighborhood-hero">
+    <div class="hero-background">
+      <img src="https://images.unsplash.com/photo-1573551089778-46a7abc39d9f?w=1920&q=80" alt="San Diego cityscape" class="hero-image" loading="eager">
+      <div class="hero-overlay dark"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-tag"><i class="fas fa-map-marked-alt"></i> Explore</span>
+      <h1 class="hero-title">San Diego<br><span class="accent">Neighborhoods</span></h1>
+      <p class="hero-subtitle">From beach towns to urban hotspots, find the community that fits your lifestyle.</p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="neighborhoods-intro">
+    <div class="container narrow">
+      <h2>Find Your Perfect Neighborhood</h2>
+      <p>San Diego County offers an incredible variety of neighborhoods, each with its own personality, lifestyle, and real estate market. Whether you're looking for coastal luxury, family-friendly suburbs, or vibrant urban living, I'll help you find the community where you belong.</p>
+    </div>
+  </section>
+
+  <!-- Neighborhoods by Region -->
+  {Object.entries(neighborhoodsByRegion).map(([region, regionNeighborhoods], index) => (
+    <section class:list={['region-section', { 'alt-bg': index % 2 === 1 }]}>
+      <div class="container">
+        <div class="region-header">
+          <div class="region-icon">
+            <i class={regionIcons[region] || 'fas fa-home'} aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2 class="region-title">{region}</h2>
+            <p class="region-subtitle">{regionNeighborhoods.length} neighborhoods</p>
+          </div>
+        </div>
+        
+        <div class="neighborhood-grid">
+          {regionNeighborhoods.map(neighborhood => (
+            <a href={`/neighborhoods/${neighborhood.data.slug}`} class="neighborhood-card">
+              <div class="neighborhood-image">
+                <img src={neighborhood.data.heroImage} alt={neighborhood.data.title} loading="lazy" />
+              </div>
+              <div class="neighborhood-content">
+                <h3>{neighborhood.data.title}</h3>
+                <p>{neighborhood.data.description}</p>
+                {neighborhood.data.highlights && (
+                  <div class="neighborhood-highlights">
+                    {neighborhood.data.highlights.slice(0, 3).map(tag => (
+                      <span class="highlight-tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+                {neighborhood.data.medianPrice && (
+                  <div class="neighborhood-stats">
+                    <div class="neighborhood-stat">
+                      <span class="neighborhood-stat-value">{neighborhood.data.medianPrice}</span>
+                      <span class="neighborhood-stat-label">Median Price</span>
+                    </div>
+                    {neighborhood.data.avgPricePerSqft && (
+                      <div class="neighborhood-stat">
+                        <span class="neighborhood-stat-value">{neighborhood.data.avgPricePerSqft}</span>
+                        <span class="neighborhood-stat-label">Per Sq Ft</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- No Content Fallback -->
+  {neighborhoods.length === 0 && (
+    <section class="region-section">
+      <div class="container">
+        <div class="no-content">
+          <i class="fas fa-map-marked-alt"></i>
+          <h3>Neighborhoods Coming Soon</h3>
+          <p>We're adding detailed neighborhood guides. Check back soon or <a href="/contact">contact Rusty</a> to learn about any San Diego neighborhood.</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container narrow">
+      <h2>Not Sure Which Neighborhood Is Right for You?</h2>
+      <p>I've lived in San Diego my whole life and know every corner of this city. Let's talk about your needs, lifestyle, and budget to find your perfect community.</p>
+      <a href="/contact" class="cta-button">Ask Rusty</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .neighborhoods-intro {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-white);
+    text-align: center;
+  }
+  
+  .neighborhoods-intro h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .neighborhoods-intro p {
+    color: var(--color-gray);
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  .region-section {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .region-section.alt-bg {
+    background: var(--color-off-white);
+  }
+  
+  .region-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .region-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--color-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .region-icon i {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+  }
+  
+  .region-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  .region-subtitle {
+    color: var(--color-gray);
+    margin: 0;
+  }
+  
+  .neighborhood-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--spacing-md);
+  }
+  
+  .neighborhood-card {
+    background: var(--color-white);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition-normal);
+    border: 1px solid var(--color-light-gray);
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .neighborhood-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-gold);
+  }
+  
+  .neighborhood-image {
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .neighborhood-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .neighborhood-card:hover .neighborhood-image img {
+    transform: scale(1.1);
+  }
+  
+  .neighborhood-content {
+    padding: var(--spacing-md);
+  }
+  
+  .neighborhood-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .neighborhood-content p {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .neighborhood-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .highlight-tag {
+    background: rgba(201, 168, 105, 0.1);
+    color: var(--color-gold);
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 2px;
+  }
+  
+  .neighborhood-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-light-gray);
+  }
+  
+  .neighborhood-stat {
+    text-align: center;
+  }
+  
+  .neighborhood-stat-value {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    display: block;
+  }
+  
+  .neighborhood-stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray);
+  }
+  
+  .no-content {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--color-gray);
+  }
+  
+  .no-content i {
+    font-size: 3rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+  
+  .no-content h3 {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .no-content a {
+    color: var(--color-gold);
+    text-decoration: underline;
+  }
+</style>

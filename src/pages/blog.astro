@@ -1,0 +1,361 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Blog posts data - in future these would come from content collection
+const blogPosts = [
+  {
+    title: "San Diego Real Estate Market: What to Expect in 2026",
+    description: "The San Diego housing market continues to evolve. Here's what buyers and sellers need to know about current conditions, pricing trends, and opportunities in the coming months.",
+    category: "Market Update",
+    date: "January 2026",
+    image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80",
+    featured: true,
+  },
+  {
+    title: "First-Time Homebuyer Guide: San Diego Edition",
+    description: "Everything you need to know about buying your first home in San Diego—from getting pre-approved to closing day.",
+    category: "Buyers",
+    date: "January 2026",
+    image: "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=600&q=80",
+  },
+  {
+    title: "10 Tips to Maximize Your Home's Value Before Selling",
+    description: "Simple improvements and staging tips that can help you get top dollar when selling your San Diego home.",
+    category: "Sellers",
+    date: "January 2026",
+    image: "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=600&q=80",
+  },
+  {
+    title: "Best San Diego Neighborhoods for Families",
+    description: "A guide to family-friendly communities with great schools, parks, and amenities across San Diego County.",
+    category: "Neighborhoods",
+    date: "December 2025",
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
+  },
+  {
+    title: "Investing in San Diego Real Estate: A Beginner's Guide",
+    description: "Why San Diego is a strong market for real estate investment and how to get started with rental properties.",
+    category: "Investment",
+    date: "December 2025",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
+  },
+  {
+    title: "Understanding VA Loans: A Guide for Military Buyers",
+    description: "Everything service members and veterans need to know about using VA loans to buy a home in San Diego.",
+    category: "Buyers",
+    date: "November 2025",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+  },
+  {
+    title: "Interest Rates and the San Diego Housing Market",
+    description: "How mortgage rates are affecting home prices and buyer demand in the San Diego market.",
+    category: "Market Update",
+    date: "November 2025",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
+  },
+];
+
+const featuredPost = blogPosts.find(p => p.featured);
+const regularPosts = blogPosts.filter(p => !p.featured);
+---
+
+<BaseLayout 
+  title="Blog"
+  description="San Diego real estate insights, market updates, and home buying tips from Rusty Rau. Stay informed about the San Diego housing market."
+>
+  <!-- Hero Section -->
+  <section class="page-hero blog-hero">
+    <div class="hero-background">
+      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80" alt="San Diego Real Estate" class="hero-image" loading="eager">
+      <div class="hero-overlay dark"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-tag"><i class="fas fa-newspaper"></i> Insights & Updates</span>
+      <h1 class="hero-title">Real Estate<br><span class="accent">Blog</span></h1>
+      <p class="hero-subtitle">Market insights, buying & selling tips, and local San Diego knowledge to help you make smart real estate decisions.</p>
+    </div>
+  </section>
+
+  <!-- Blog Content -->
+  <section class="blog-section">
+    <div class="container">
+      <!-- Featured Post -->
+      {featuredPost && (
+        <article class="featured-post">
+          <div class="featured-post-image">
+            <img src={featuredPost.image} alt={featuredPost.title} loading="lazy">
+            <span class="post-category">{featuredPost.category}</span>
+          </div>
+          <div class="featured-post-content">
+            <span class="post-date"><i class="far fa-calendar"></i> {featuredPost.date}</span>
+            <h2>{featuredPost.title}</h2>
+            <p>{featuredPost.description}</p>
+            <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      )}
+
+      <!-- Blog Grid -->
+      <div class="blog-grid">
+        {regularPosts.map(post => (
+          <article class="blog-card">
+            <div class="blog-card-image">
+              <img src={post.image} alt={post.title} loading="lazy">
+              <span class="post-category">{post.category}</span>
+            </div>
+            <div class="blog-card-content">
+              <span class="post-date"><i class="far fa-calendar"></i> {post.date}</span>
+              <h3>{post.title}</h3>
+              <p>{post.description}</p>
+              <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="blog-load-more">
+        <p class="coming-soon"><i class="fas fa-bell"></i> More articles coming soon! Subscribe below to get notified when new posts are published.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container narrow">
+      <div class="newsletter-box">
+        <div class="newsletter-content">
+          <i class="fas fa-envelope-open-text newsletter-icon"></i>
+          <h2>Stay Informed</h2>
+          <p>Get San Diego real estate insights, market updates, and tips delivered to your inbox.</p>
+        </div>
+        <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <div class="newsletter-input-group">
+            <input type="email" name="email" placeholder="Your email address" required>
+            <button type="submit" class="cta-button"><i class="fas fa-paper-plane"></i> Subscribe</button>
+          </div>
+          <p class="newsletter-disclaimer"><i class="fas fa-lock"></i> No spam, ever. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-hero {
+    min-height: 60vh;
+  }
+  
+  .blog-section {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .featured-post {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    background: var(--color-off-white);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  @media (max-width: 768px) {
+    .featured-post {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .featured-post-image {
+    position: relative;
+    min-height: 400px;
+  }
+  
+  .featured-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .post-category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--color-gold);
+    color: var(--color-primary);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 4px;
+  }
+  
+  .featured-post-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .post-date {
+    color: var(--color-gray);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .featured-post-content h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  
+  .featured-post-content p {
+    color: var(--color-gray);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  
+  .read-more {
+    color: var(--color-gold);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-fast);
+  }
+  
+  .read-more:hover {
+    gap: 0.75rem;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+  
+  .blog-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+  }
+  
+  .blog-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+  
+  .blog-card-image {
+    position: relative;
+    height: 200px;
+  }
+  
+  .blog-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .blog-card-content {
+    padding: 1.5rem;
+  }
+  
+  .blog-card-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  
+  .blog-card-content p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .blog-load-more {
+    text-align: center;
+    padding: 3rem 0;
+  }
+  
+  .coming-soon {
+    color: var(--color-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .coming-soon i {
+    color: var(--color-gold);
+  }
+  
+  .newsletter-section {
+    background: var(--color-primary);
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .newsletter-box {
+    text-align: center;
+    color: var(--color-white);
+  }
+  
+  .newsletter-icon {
+    font-size: 3rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+  
+  .newsletter-box h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .newsletter-box > p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 2rem;
+  }
+  
+  .newsletter-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .newsletter-input-group {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  @media (max-width: 480px) {
+    .newsletter-input-group {
+      flex-direction: column;
+    }
+  }
+  
+  .newsletter-input-group input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  
+  .newsletter-disclaimer {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+</style>

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "paul-s",
+    "clientName": "Paul S.",
+    "clientLocation": "Mira Costa, Oceanside",
+    "quote": "Rusty has the expertise, knowledge and motivation to make your buying/selling needs go better than you expect! I'm not kidding! I was truly blessed to have found Rusty to help me with my home sale.",
+    "rating": 5,
+    "type": "seller",
+    "neighborhood": "Oceanside",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "id": "daniel-b",
+    "clientName": "Daniel B.",
+    "clientLocation": "Normal Heights",
+    "quote": "We were first time home buyers trying to buy in a very competitive market, and Rusty helped us navigate the process with patience and honesty. We always felt like he had our best interests at heart.",
+    "rating": 5,
+    "type": "buyer",
+    "neighborhood": "Normal Heights",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "id": "amanda-d",
+    "clientName": "Amanda D.",
+    "clientLocation": "Clairemont Mesa East",
+    "quote": "Rusty did an amazing job. He wasn't pushy, he listened and he responded in a timely manner. He was super patient with us. He had strategies to help us get our house!",
+    "rating": 5,
+    "type": "buyer",
+    "neighborhood": "Clairemont",
+    "featured": true,
+    "order": 3
+  },
+  {
+    "id": "gina-p",
+    "clientName": "Gina P.",
+    "quote": "We met Rusty and Richard at an open house that we just happened upon. We had been looking for a home for almost a year. They expertly guided us through the entire process with professionalism and care.",
+    "rating": 5,
+    "type": "both",
+    "featured": true,
+    "order": 4
+  },
+  {
+    "id": "verified-client-rb",
+    "clientName": "Verified Client",
+    "clientLocation": "Rancho Bernardo",
+    "quote": "All of the prior highly positive reviews are spot on. Rusty and Richard teamed to help us sell and buy our house. They expertly helped us work through a challenging situation with skill and dedication.",
+    "rating": 5,
+    "type": "both",
+    "neighborhood": "Rancho Bernardo",
+    "featured": true,
+    "order": 5
+  },
+  {
+    "id": "marvin-g",
+    "clientName": "Marvin G.",
+    "clientLocation": "Carmel Valley",
+    "quote": "The process of purchasing my first home was very overwhelming. But I'm glad I had a very knowledgeable, personable and patient agent on my team. Rusty not only helped me find my dream home but made the whole experience enjoyable.",
+    "rating": 5,
+    "type": "buyer",
+    "neighborhood": "Carmel Valley",
+    "featured": true,
+    "order": 6
+  }
+]

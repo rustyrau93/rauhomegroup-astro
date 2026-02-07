@@ -1,0 +1,78 @@
+---
+const accolades = [
+  { icon: 'fas fa-award', label: 'Top Producer' },
+  { icon: 'fas fa-star', label: '100% 5-Star Reviews' },
+  { icon: 'fas fa-shield-alt', label: 'Licensed REALTOR' },
+  { icon: 'fas fa-trophy', label: 'Top 5% in San Diego' },
+];
+
+const socialLinks = [
+  { href: 'https://www.instagram.com/rustyrau_sdrealtor/', icon: 'fab fa-instagram', label: 'Follow Rusty on Instagram' },
+  { href: 'https://www.facebook.com/', icon: 'fab fa-facebook-f', label: 'Follow Rusty on Facebook' },
+  { href: 'https://www.linkedin.com/', icon: 'fab fa-linkedin-in', label: 'Connect with Rusty on LinkedIn' },
+  { href: 'https://www.youtube.com/', icon: 'fab fa-youtube', label: 'Watch Rusty on YouTube' },
+];
+
+const primaryLinks = [
+  { href: '/#about', label: 'About' },
+  { href: '/buyers', label: 'Buyers' },
+  { href: '/sellers', label: 'Sellers' },
+  { href: '/neighborhoods', label: 'Areas' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const secondaryLinks = [
+  { href: '/blog', label: 'Blog' },
+  { href: '/#testimonials', label: 'Reviews' },
+  { href: '/mortgage-calculator', label: 'Mortgage Calculator' },
+  { href: '/neighborhoods', label: 'San Diego Neighborhoods' },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <!-- Accolades/Trust Badges -->
+    <div class="footer-accolades" role="list" aria-label="Achievements and certifications">
+      {accolades.map(item => (
+        <div class="accolade-item" role="listitem">
+          <i class={item.icon} aria-hidden="true"></i>
+          <span>{item.label}</span>
+        </div>
+      ))}
+    </div>
+    
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="logo-text">RAU HOME GROUP</span>
+        <p>San Diego Real Estate Expert</p>
+        <p class="footer-brokerage">Rau Home Group</p>
+        <!-- Social Icons -->
+        <div class="footer-social" role="list" aria-label="Social media links">
+          {socialLinks.map(link => (
+            <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+              <i class={link.icon} aria-hidden="true"></i>
+            </a>
+          ))}
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-links">
+          {primaryLinks.map(link => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </div>
+        <div class="footer-links footer-links-secondary">
+          {secondaryLinks.map(link => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Rusty Rau. All rights reserved.</p>
+      <p class="footer-legal">DRE# 02084462 | Rau Home Group</p>
+    </div>
+  </div>
+</footer>

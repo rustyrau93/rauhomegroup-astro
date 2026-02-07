@@ -1,0 +1,95 @@
+---
+const navLinks = [
+  { href: '/#about', label: 'About' },
+  { href: '/buyers', label: 'Buyers' },
+  { href: '/sellers', label: 'Sellers' },
+];
+
+const resourceLinks = [
+  { href: '/mortgage-calculator', label: 'Mortgage Calculator', icon: 'fas fa-calculator' },
+  { href: '/neighborhoods', label: 'San Diego Neighborhoods', icon: 'fas fa-map-marked-alt' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-container">
+    <a href="/" class="logo" aria-label="Rau Home Group - Home">
+      <img src="/images/logo-white.jpg" alt="" class="logo-img" width="60" height="60" aria-hidden="true">
+      <div class="logo-text-wrap">
+        <span class="logo-text">RAU HOME GROUP</span>
+        <span class="logo-subtitle">SAN DIEGO REAL ESTATE</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="menubar">
+      {navLinks.map(link => (
+        <li role="none">
+          <a 
+            href={link.href} 
+            role="menuitem"
+            class:list={[{ active: currentPath === link.href }]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="nav-dropdown" role="none">
+        <a href="#" class="dropdown-toggle" role="menuitem" aria-haspopup="true" aria-expanded="false">
+          Resources <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-label="Resources submenu">
+          {resourceLinks.map(link => (
+            <li role="none">
+              <a href={link.href} role="menuitem">
+                <i class={link.icon} aria-hidden="true"></i> {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </li>
+      <li role="none">
+        <a 
+          href="/contact" 
+          class:list={['nav-cta', { active: currentPath === '/contact' }]}
+          role="menuitem"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+    <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+        mobileMenuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+        mobileMenuBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+    }
+    
+    // Dropdown toggle
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    if (dropdownToggle) {
+      dropdownToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+        dropdownToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+        dropdownToggle.parentElement?.classList.toggle('active');
+      });
+    }
+  });
+</script>
