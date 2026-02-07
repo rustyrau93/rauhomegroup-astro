@@ -5,13 +5,11 @@ import { getCollection } from 'astro:content';
 // Get all neighborhoods
 const neighborhoods = await getCollection('neighborhoods', ({ data }) => !data.draft);
 
-// Group by region
+// Group by region - only include neighborhoods that have content pages
 const regions = {
-  'Coastal': ['la-jolla', 'del-mar', 'encinitas', 'solana-beach', 'carlsbad', 'oceanside', 'coronado', 'point-loma', 'pacific-beach', 'ocean-beach', 'mission-beach', 'imperial-beach'],
-  'North County': ['carmel-valley', 'rancho-bernardo', 'poway', 'scripps-ranch', '4s-ranch', 'rancho-santa-fe', 'san-marcos', 'escondido', 'vista'],
-  'Urban San Diego': ['downtown-gaslamp', 'hillcrest', 'north-park', 'south-park', 'mission-hills', 'kensington', 'normal-heights', 'university-heights'],
-  'East County': ['la-mesa', 'el-cajon', 'santee', 'alpine', 'rancho-penasquitos', 'mira-mesa', 'clairemont'],
-  'South Bay': ['chula-vista', 'eastlake-chula-vista', 'national-city'],
+  'Coastal': ['la-jolla', 'del-mar'],
+  'North County': ['carmel-valley'],
+  'Urban San Diego': ['downtown-gaslamp', 'north-park'],
 };
 
 // Organize neighborhoods by region
@@ -25,8 +23,6 @@ const regionIcons: Record<string, string> = {
   'Coastal': 'fas fa-umbrella-beach',
   'North County': 'fas fa-mountain',
   'Urban San Diego': 'fas fa-city',
-  'East County': 'fas fa-tree',
-  'South Bay': 'fas fa-sun',
 };
 ---
 

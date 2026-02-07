@@ -301,6 +301,9 @@ a {
     right: 0;
     z-index: 1000;
     padding: calc(var(--spacing-md) * 1.25) 0;
+    background: rgba(26, 35, 50, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                 background 0.3s ease, 
                 padding 0.3s ease;
@@ -3974,14 +3977,15 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
+    bottom: auto;
     transform: translate(-50%, -50%);
     color: var(--color-white);
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     opacity: 0;
     transition: opacity 0.4s ease;
-    padding: 0.15rem 0.6rem;
+    padding: 0.08rem 0.35rem;
     border: 1px solid var(--color-white);
     background: rgba(26, 35, 50, 0.5);
 }
