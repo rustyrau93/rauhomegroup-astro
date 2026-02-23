@@ -12,21 +12,28 @@
 
 /* CSS Variables */
 :root {
+    /* === The Six Pack — Option B Color Palette === */
     --color-primary: #1A2332;
     --color-secondary: #C9A869;
     --color-white: #FFFFFF;
-    --color-off-white: #F8F7F4;
+    --color-off-white: #F8F6F1;
     --color-gray: #6B7280;
     --color-light-gray: #E5E7EB;
-    --color-dark: #0D1117;
+    --color-dark: #0F1720;
     --color-success: #10B981;
     --color-error: #EF4444;
-    
-    /* Luxury palette aliases */
+
+    /* Luxury palette — The Six Pack */
     --navy: #1A2332;
+    --navy-deep: #0F1720;
+    --navy-600: #2D3B4E;
     --gold: #C9A869;
-    --gold-light: #E8D5A8;
-    
+    --gold-light: #F0E6D0;
+    --surface-warm: #F8F6F1;
+
+    /* Body text uses softer navy for readability */
+    --color-body: #2D3B4E;
+
     /* Focus ring color for accessibility */
     --focus-ring: #C9A869;
     --focus-ring-offset: 3px;
@@ -133,11 +140,16 @@ body {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.6;
-    color: var(--color-primary);
+    color: var(--color-body);
     background-color: var(--color-white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+}
+
+/* Headings stay full navy for hierarchy contrast */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary);
 }
 
 img {
@@ -529,7 +541,7 @@ a {
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(13, 17, 23, 0.6) 0%,
+        rgba(15, 23, 32, 0.6) 0%,
         rgba(26, 35, 50, 0.8) 100%
     );
 }
@@ -537,7 +549,7 @@ a {
 .hero-overlay.dark {
     background: linear-gradient(
         to bottom,
-        rgba(13, 17, 23, 0.8) 0%,
+        rgba(15, 23, 32, 0.8) 0%,
         rgba(26, 35, 50, 0.9) 100%
     );
 }
@@ -4000,7 +4012,7 @@ section {
 
 /* Show More Neighborhoods Card */
 .neighborhood-slide-more {
-    background: linear-gradient(135deg, #1A2332 0%, #0D1117 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4016,7 +4028,7 @@ section {
 }
 
 .neighborhood-slide-more:hover {
-    background: linear-gradient(135deg, #0D1117 0%, #1A2332 100%);
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
 }
 
 .neighborhood-slide-more .slide-name {

@@ -1,0 +1,696 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The San Diego Seller's Playbook"
+  description="Free guide: Everything you need to know before listing your home in San Diego — pricing, timing, inspections, and the mistakes that cost sellers thousands."
+>
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+
+  <!-- Hero Section -->
+  <section class="playbook-hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text reveal-up">
+          <h1 class="playbook-title">The San Diego<br>Seller's Playbook</h1>
+          <p class="playbook-subtitle">Everything you need to know before listing your home &mdash; pricing, timing, inspections, and the mistakes that cost San Diego sellers thousands.</p>
+          <div class="trust-indicators">
+            <span class="trust-item"><i class="fas fa-check"></i> Free &mdash; no strings attached</span>
+            <span class="trust-item"><i class="fas fa-check"></i> 100% 5-star reviews on Zillow</span>
+            <span class="trust-item"><i class="fas fa-check"></i> Born &amp; raised San Diego local</span>
+          </div>
+          <div id="playbook-video" class="video-placeholder"></div>
+        </div>
+        <div class="hero-form-card reveal-up">
+          <h2 class="form-card-title">Get Your Free Copy</h2>
+          <p class="form-card-subtitle">Sent straight to your inbox in under 60 seconds.</p>
+          <form class="playbook-form" id="hero-form">
+            <div class="form-group">
+              <input type="text" name="first_name" placeholder="First Name" required aria-label="First Name" />
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" required aria-label="Email" />
+            </div>
+            <div class="form-group">
+              <input type="tel" name="phone" placeholder="Phone (optional)" aria-label="Phone" />
+              <span class="field-note">So I can text you the link too</span>
+            </div>
+            <button type="submit" class="playbook-cta pulse-glow">Send Me the Playbook</button>
+          </form>
+          <div class="form-success" style="display:none;">
+            <div class="success-icon"><i class="fas fa-paper-plane"></i></div>
+            <p class="success-text">Check your inbox! I just sent the Playbook to your email. If you included your phone number, check for a text from me too.</p>
+          </div>
+          <div class="form-error" style="display:none;">
+            <p class="error-text">Something went wrong. Please try again or email me directly at rusty@rauhomegroup.com.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You'll Learn -->
+  <section class="content-section alt-bg">
+    <div class="container">
+      <h2 class="section-title center reveal-up">What You'll Learn</h2>
+      <div class="learn-grid">
+        <div class="feature-card reveal-up">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Pricing Strategy for 2026</h3>
+          <p>How to find the real number &mdash; not Zillow's number &mdash; based on what's actually closing in your neighborhood right now.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <div class="feature-icon"><i class="fas fa-search"></i></div>
+          <h3>The Inspection Playbook</h3>
+          <p>What kills deals, what doesn't, and the $400 move that prevents 90% of renegotiations.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <div class="feature-icon"><i class="fas fa-dollar-sign"></i></div>
+          <h3>The True Cost of Selling</h3>
+          <p>Agent commissions, closing costs, repairs, staging &mdash; the full breakdown so nothing surprises you.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <div class="feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+          <h3>5 Mistakes That Cost SD Sellers Thousands</h3>
+          <p>The pricing trap, the timing mistake, and three more I see every month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Rusty -->
+  <section class="content-section">
+    <div class="container">
+      <div class="about-grid reveal-up">
+        <div class="about-photo">
+          <img src="/images/rusty-headshot.jpg" alt="Rusty Rau, San Diego Real Estate Agent" loading="lazy" />
+        </div>
+        <div class="about-text">
+          <h2 class="section-title">Written by Rusty Rau</h2>
+          <p>I wrote this guide because I kept seeing the same mistakes cost San Diego sellers tens of thousands of dollars. Overpricing. Skipping the pre-inspection. Choosing the wrong time to list. These aren't rookie mistakes &mdash; they happen to smart people every day because no one told them what to expect.</p>
+          <p>After six-plus years helping buyers and sellers across every San Diego neighborhood, I put everything I know into this playbook. No fluff, no upsell &mdash; just the real playbook I'd hand to a friend.</p>
+          <div class="stats-bar">
+            <div class="stat-item">
+              <span class="stat-value">100%</span>
+              <span class="stat-label">5-Star Reviews</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">Top 5%</span>
+              <span class="stat-label">SD Agent</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">6+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">DRE</span>
+              <span class="stat-label">#02084462</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="playbook-testimonials">
+    <div class="container">
+      <h2 class="section-title center reveal-up" style="color: var(--color-white);">What Clients Are Saying</h2>
+      <div class="testimonials-grid reveal-up">
+        <div class="testimonial-item">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">"My first two bids came in over the asking price within five days of listing it. I owe that all to Rusty."</p>
+          <div class="testimonial-author">
+            <span class="author-name">Paul S.</span>
+            <span class="author-location">Oceanside</span>
+          </div>
+        </div>
+        <div class="testimonial-item">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">"He wasn't pushy, he listened, and he had strategies to get our house. We always felt like he had our best interests in mind."</p>
+          <div class="testimonial-author">
+            <span class="author-name">Amanda D.</span>
+            <span class="author-location">Clairemont</span>
+          </div>
+        </div>
+        <div class="testimonial-item">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">"We sold our house for top dollar and solidified a purchase for under asking in our new home &mdash; unheard of at the time."</p>
+          <div class="testimonial-author">
+            <span class="author-name">Gina P.</span>
+            <span class="author-location">San Diego</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="content-section alt-bg">
+    <div class="container narrow">
+      <div class="final-cta reveal-up">
+        <h2 class="section-title center">Get Your Free Copy</h2>
+        <p class="final-cta-subtitle">Enter your email and I'll send the Playbook straight to your inbox. Takes 10 seconds.</p>
+        <div class="final-form-wrap">
+          <form class="playbook-form" id="footer-form">
+            <div class="form-group">
+              <input type="text" name="first_name" placeholder="First Name" required aria-label="First Name" />
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" required aria-label="Email" />
+            </div>
+            <div class="form-group">
+              <input type="tel" name="phone" placeholder="Phone (optional)" aria-label="Phone" />
+              <span class="field-note">So I can text you the link too</span>
+            </div>
+            <button type="submit" class="playbook-cta pulse-glow">Send Me the Playbook</button>
+          </form>
+          <div class="form-success" style="display:none;">
+            <div class="success-icon"><i class="fas fa-paper-plane"></i></div>
+            <p class="success-text">Check your inbox! I just sent the Playbook to your email. If you included your phone number, check for a text from me too.</p>
+          </div>
+          <div class="form-error" style="display:none;">
+            <p class="error-text">Something went wrong. Please try again or email me directly at rusty@rauhomegroup.com.</p>
+          </div>
+        </div>
+        <p class="privacy-note">Your info stays with me. No spam, no selling your data. Ever.<br><strong>Move With Confidence.</strong></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ============================================
+     PLAYBOOK HERO
+     ============================================ */
+  .playbook-hero {
+    background: var(--color-primary);
+    padding: 8rem 0 var(--spacing-xl);
+    color: var(--color-white);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+  }
+
+  .playbook-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-white);
+  }
+
+  .playbook-subtitle {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--spacing-md);
+    max-width: 520px;
+  }
+
+  .trust-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .trust-item i {
+    color: var(--color-secondary);
+    font-size: 0.85rem;
+  }
+
+  .video-placeholder {
+    /* Reserved space for future video embed */
+    min-height: 0;
+  }
+
+  /* ============================================
+     FORM CARD
+     ============================================ */
+  .hero-form-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-primary);
+  }
+
+  .form-card-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--color-primary);
+  }
+
+  .form-card-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .playbook-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .playbook-form .form-group {
+    width: 100%;
+  }
+
+  .playbook-form input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 8px;
+    background: var(--color-white);
+    transition: var(--transition-fast);
+    color: var(--color-primary);
+  }
+
+  .playbook-form input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(201, 168, 105, 0.2);
+  }
+
+  .playbook-form input::placeholder {
+    color: var(--color-gray);
+  }
+
+  .field-note {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    margin-top: 0.3rem;
+    padding-left: 0.25rem;
+  }
+
+  /* ============================================
+     PLAYBOOK CTA BUTTON
+     ============================================ */
+  .playbook-cta {
+    display: block;
+    width: 100%;
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 1rem 2rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    text-align: center;
+    margin-top: 0.25rem;
+  }
+
+  .playbook-cta:hover {
+    background: #DEB879;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201, 168, 105, 0.4);
+  }
+
+  .playbook-cta:active {
+    transform: translateY(0);
+  }
+
+  .playbook-cta:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    animation: none;
+  }
+
+  /* ============================================
+     FORM SUCCESS / ERROR STATES
+     ============================================ */
+  .form-success {
+    text-align: center;
+    padding: var(--spacing-sm) 0;
+  }
+
+  .success-icon {
+    font-size: 2.5rem;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .success-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-primary);
+  }
+
+  .form-error {
+    padding: 0.75rem 1rem;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 8px;
+  }
+
+  .error-text {
+    color: var(--color-error, #EF4444);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  /* ============================================
+     WHAT YOU'LL LEARN GRID (2x2)
+     ============================================ */
+  .learn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+  }
+
+  .learn-grid .feature-card {
+    background: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: 2px;
+    text-align: center;
+    transition: var(--transition-normal);
+    border: 1px solid var(--color-light-gray);
+  }
+
+  .learn-grid .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-secondary);
+  }
+
+  .learn-grid .feature-icon {
+    font-size: 2.5rem;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .learn-grid .feature-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+  }
+
+  .learn-grid .feature-card p {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ============================================
+     ABOUT RUSTY
+     ============================================ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+  }
+
+  .about-photo img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+  }
+
+  .about-text .section-title {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .about-text p {
+    color: var(--color-gray);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-light-gray);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ============================================
+     TESTIMONIALS SECTION
+     ============================================ */
+  .playbook-testimonials {
+    background: var(--color-primary);
+    padding: var(--spacing-xl) 0;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+  }
+
+  .testimonial-item {
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .testimonial-item .quote-icon {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    opacity: 0.6;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .testimonial-item .testimonial-text {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .testimonial-item .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .testimonial-item .author-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+  }
+
+  .testimonial-item .author-location {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* ============================================
+     FINAL CTA
+     ============================================ */
+  .final-cta {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .final-cta-subtitle {
+    color: var(--color-gray);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .final-form-wrap {
+    text-align: left;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .final-form-wrap .playbook-form {
+    gap: 1rem;
+  }
+
+  .privacy-note {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+  }
+
+  .privacy-note strong {
+    color: var(--color-primary);
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .playbook-hero {
+      padding: 7rem 0 var(--spacing-lg);
+    }
+
+    .playbook-subtitle {
+      max-width: none;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .about-photo {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      text-align: center;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-bar {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .playbook-hero {
+      padding: 6rem 0 var(--spacing-md);
+    }
+
+    .learn-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-bar {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-sm);
+    }
+
+    .hero-form-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Capture UTM params from URL
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get('utm_source') || '';
+    const utmMedium = params.get('utm_medium') || '';
+    const utmCampaign = params.get('utm_campaign') || '';
+    const utmContent = params.get('utm_content') || '';
+
+    // Handle all playbook forms
+    const forms = document.querySelectorAll('.playbook-form');
+
+    forms.forEach((form) => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formEl = e.target as HTMLFormElement;
+        const wrapper = formEl.parentElement!;
+        const successEl = wrapper.querySelector('.form-success') as HTMLElement;
+        const errorEl = wrapper.querySelector('.form-error') as HTMLElement;
+        const submitBtn = formEl.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+        // Get values
+        const firstName = (formEl.querySelector('input[name="first_name"]') as HTMLInputElement).value.trim();
+        const email = (formEl.querySelector('input[name="email"]') as HTMLInputElement).value.trim();
+        const phone = (formEl.querySelector('input[name="phone"]') as HTMLInputElement).value.trim();
+
+        // Disable button during submission
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+          const res = await fetch('/api/leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              first_name: firstName,
+              email: email,
+              phone: phone || null,
+              source: 'seller-playbook',
+              funnel_stage: 'lead',
+              utm_source: utmSource,
+              utm_medium: utmMedium,
+              utm_campaign: utmCampaign,
+              utm_content: utmContent,
+            }),
+          });
+
+          if (!res.ok) throw new Error('Server error');
+
+          // Success: hide form, show thank-you
+          formEl.style.display = 'none';
+          errorEl.style.display = 'none';
+          successEl.style.display = 'block';
+
+          // Fire Meta Pixel event
+          if (typeof (window as any).fbq === 'function') {
+            (window as any).fbq('track', 'Lead', { content_name: 'Seller Playbook' });
+          }
+        } catch (err) {
+          // Show error, keep form visible
+          errorEl.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Me the Playbook';
+        }
+      });
+    });
+  });
+</script>

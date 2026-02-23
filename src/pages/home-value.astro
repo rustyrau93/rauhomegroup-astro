@@ -1,0 +1,842 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Free Home Valuation"
+  description="Get a free, personalized home valuation from a San Diego real estate expert. Not an algorithm — a real CMA from someone who knows your neighborhood."
+>
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+
+  <!-- Section 1: Hero — Navy Background, Split Layout -->
+  <section class="hv-hero">
+    <div class="container">
+      <div class="hv-hero-grid">
+        <div class="hv-hero-content">
+          <h1 class="hv-hero-title">What's Your San Diego Home <span class="accent">Really Worth?</span></h1>
+          <p class="hv-hero-subtitle">Not the Zillow number. Not the algorithm. A real valuation from someone who knows your neighborhood — because they grew up in it.</p>
+          <div id="valuation-video" class="hv-video-placeholder"></div>
+        </div>
+        <div class="hv-form-card reveal-up">
+          <form class="valuation-form" id="hero-form" novalidate>
+            <div class="form-group">
+              <input type="text" name="first_name" placeholder="First Name" required aria-label="First Name" />
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" required aria-label="Email" />
+            </div>
+            <div class="form-group">
+              <input type="tel" name="phone" placeholder="Phone" required aria-label="Phone" />
+            </div>
+            <div class="form-group">
+              <input type="text" name="property_address" placeholder="Property Address" required aria-label="Property Address" />
+            </div>
+            <button type="submit" class="submit-button hv-submit pulse-glow">Get My Free Home Valuation</button>
+          </form>
+          <div class="hv-form-success" style="display:none;">
+            <div class="hv-success-icon"><i class="fas fa-check-circle"></i></div>
+            <h3 class="hv-success-title">Thanks <span class="hv-success-name"></span>!</h3>
+            <p class="hv-success-text">I'll have your personalized valuation ready within 24 hours. In the meantime, I just sent you a text — feel free to reply with any questions.</p>
+          </div>
+          <div class="hv-form-error" style="display:none;">
+            <p><i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again or call me directly at <a href="tel:+18582044692">(858) 204-4692</a>.</p>
+          </div>
+          <div class="hv-trust-indicators">
+            <span><i class="fas fa-check"></i> Personalized CMA delivered within 24 hours</span>
+            <span><i class="fas fa-check"></i> No obligation, no pressure</span>
+            <span><i class="fas fa-check"></i> 100% 5-star reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Why the Algorithm Gets It Wrong -->
+  <section class="content-section alt-bg">
+    <div class="container">
+      <h2 class="section-title center reveal-up">Why the Algorithm Gets It Wrong</h2>
+      <div class="features-grid">
+        <div class="feature-card reveal-up">
+          <div class="feature-icon"><i class="fas fa-home"></i></div>
+          <h3>Zillow Can't Walk Your Floors</h3>
+          <p>Algorithms don't see your renovated kitchen, your backyard views, or the water damage in the garage. A real valuation accounts for your home's actual condition.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h3>Your Neighborhood Has Micro-Markets</h3>
+          <p>Two blocks can mean a $100K difference in San Diego. A local agent who grew up here knows which streets command premiums and why.</p>
+        </div>
+        <div class="feature-card reveal-up">
+          <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+          <h3>Timing Changes Everything</h3>
+          <p>What your neighbor sold for 6 months ago isn't what your home is worth today. A current CMA uses the latest closings — not stale data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: What You Get -->
+  <section class="content-section">
+    <div class="container narrow">
+      <h2 class="section-title center reveal-up">Your Personalized Home Valuation Includes</h2>
+      <ul class="hv-checklist reveal-up">
+        <li>
+          <span class="hv-check-icon"><i class="fas fa-check"></i></span>
+          <span><strong>Comparable sales analysis</strong> — what similar homes in your area actually closed for in the last 90 days</span>
+        </li>
+        <li>
+          <span class="hv-check-icon"><i class="fas fa-check"></i></span>
+          <span><strong>Current market conditions</strong> — inventory levels, days on market, and buyer activity in your neighborhood</span>
+        </li>
+        <li>
+          <span class="hv-check-icon"><i class="fas fa-check"></i></span>
+          <span><strong>Pricing recommendation</strong> — where I'd price your home to maximize your result based on your goals</span>
+        </li>
+        <li>
+          <span class="hv-check-icon"><i class="fas fa-check"></i></span>
+          <span><strong>Net proceeds estimate</strong> — what you'd actually walk away with after commissions, closing costs, and fees</span>
+        </li>
+        <li>
+          <span class="hv-check-icon"><i class="fas fa-check"></i></span>
+          <span><strong>A real conversation</strong> — not a drip campaign. I'll call you personally to walk through the numbers.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 4: Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title center reveal-up" style="color: var(--color-white);">What Clients Are Saying</h2>
+      <div class="hv-testimonials-grid">
+        <div class="testimonial-card reveal-up">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"My first two bids came in over the asking price within five days of listing it. I owe that all to Rusty."</p>
+          <div class="testimonial-author">
+            <span class="author-name">Paul S.</span>
+            <span class="author-detail">Seller, Oceanside (2025)</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal-up">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"We sold our house for top dollar and solidified a purchase for under asking in our new home — unheard of at the time."</p>
+          <div class="testimonial-author">
+            <span class="author-name">Gina P.</span>
+            <span class="author-detail">Buyer + Seller, San Diego (2022)</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal-up">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"We were so impressed with Rusty, and trusted him so much, that we had him list and sell our house too."</p>
+          <div class="testimonial-author">
+            <span class="author-name">crowther6</span>
+            <span class="author-detail">Repeat Client, Oceanside to Irvine</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: About Rusty -->
+  <section class="content-section alt-bg">
+    <div class="container">
+      <div class="hv-about-grid reveal-up">
+        <div class="hv-about-photo">
+          <img src="/images/rusty-headshot.jpg" alt="Rusty Rau — San Diego Real Estate Agent" loading="lazy" />
+        </div>
+        <div class="hv-about-text">
+          <h2 class="section-title">Meet Rusty Rau</h2>
+          <p>San Diego born and raised. I've been helping families buy and sell homes across every SD neighborhood for over 6 years. Top 5% of agents in San Diego, 100% 5-star reviews, and I actually answer my phone.</p>
+          <p>When I send you a home valuation, it's not a template. I pull the comps, analyze the market, factor in your home's unique features, and give you the real number — along with a strategy to maximize it.</p>
+          <p>No obligation. No pressure. Just honest information so you can make a smart decision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: FAQ -->
+  <section class="content-section">
+    <div class="container narrow">
+      <h2 class="section-title center reveal-up">Frequently Asked Questions</h2>
+      <div class="hv-faq-list reveal-up">
+        <div class="hv-faq-item">
+          <button class="hv-faq-question" aria-expanded="false">
+            <span>How long does the valuation take?</span>
+            <i class="fas fa-chevron-down hv-faq-chevron"></i>
+          </button>
+          <div class="hv-faq-answer" role="region">
+            <p>I'll have your personalized CMA ready within 24 hours. For most homes, I can turn it around the same day.</p>
+          </div>
+        </div>
+        <div class="hv-faq-item">
+          <button class="hv-faq-question" aria-expanded="false">
+            <span>Is this really free?</span>
+            <i class="fas fa-chevron-down hv-faq-chevron"></i>
+          </button>
+          <div class="hv-faq-answer" role="region">
+            <p>Yes. No cost, no obligation, no pressure. I do this because it's the best way to start a relationship — by being useful.</p>
+          </div>
+        </div>
+        <div class="hv-faq-item">
+          <button class="hv-faq-question" aria-expanded="false">
+            <span>What's a CMA?</span>
+            <i class="fas fa-chevron-down hv-faq-chevron"></i>
+          </button>
+          <div class="hv-faq-answer" role="region">
+            <p>A Comparative Market Analysis. It's what agents use to determine your home's value based on recent sales of similar homes in your area. Much more accurate than Zillow because it accounts for condition, upgrades, and hyperlocal factors.</p>
+          </div>
+        </div>
+        <div class="hv-faq-item">
+          <button class="hv-faq-question" aria-expanded="false">
+            <span>What happens after I get my valuation?</span>
+            <i class="fas fa-chevron-down hv-faq-chevron"></i>
+          </button>
+          <div class="hv-faq-answer" role="region">
+            <p>That's up to you. I'll call you to walk through the numbers. If you want to explore selling, great — we'll talk strategy. If you're just curious, that's fine too. No pressure either way.</p>
+          </div>
+        </div>
+        <div class="hv-faq-item">
+          <button class="hv-faq-question" aria-expanded="false">
+            <span>How is this different from Zillow's Zestimate?</span>
+            <i class="fas fa-chevron-down hv-faq-chevron"></i>
+          </button>
+          <div class="hv-faq-answer" role="region">
+            <p>Zillow uses an algorithm that doesn't see inside your home, doesn't know your street's reputation, and can't account for recent changes in your neighborhood. My valuation uses actual closed sales, current market conditions, and 6+ years of local knowledge.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Final CTA -->
+  <section class="hv-final-cta">
+    <div class="container narrow">
+      <h2 class="hv-final-title reveal-up">Get Your Free Home Valuation</h2>
+      <p class="hv-final-subtitle reveal-up">Personalized. Accurate. Delivered in 24 hours. No strings attached.</p>
+      <div class="hv-form-card hv-form-card-bottom reveal-up">
+        <form class="valuation-form" id="bottom-form" novalidate>
+          <div class="form-group">
+            <input type="text" name="first_name" placeholder="First Name" required aria-label="First Name" />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email" required aria-label="Email" />
+          </div>
+          <div class="form-group">
+            <input type="tel" name="phone" placeholder="Phone" required aria-label="Phone" />
+          </div>
+          <div class="form-group">
+            <input type="text" name="property_address" placeholder="Property Address" required aria-label="Property Address" />
+          </div>
+          <button type="submit" class="submit-button hv-submit pulse-glow">Get My Free Home Valuation</button>
+        </form>
+        <div class="hv-form-success" style="display:none;">
+          <div class="hv-success-icon"><i class="fas fa-check-circle"></i></div>
+          <h3 class="hv-success-title">Thanks <span class="hv-success-name"></span>!</h3>
+          <p class="hv-success-text">I'll have your personalized valuation ready within 24 hours. In the meantime, I just sent you a text — feel free to reply with any questions.</p>
+        </div>
+        <div class="hv-form-error" style="display:none;">
+          <p><i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again or call me directly at <a href="tel:+18582044692">(858) 204-4692</a>.</p>
+        </div>
+        <div class="hv-trust-indicators">
+          <span><i class="fas fa-check"></i> Personalized CMA delivered within 24 hours</span>
+          <span><i class="fas fa-check"></i> No obligation, no pressure</span>
+          <span><i class="fas fa-check"></i> 100% 5-star reviews</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal Bar -->
+  <div class="hv-legal-bar">
+    <div class="container">
+      <p>Rusty Rau | Rau Home Group | (858) 204-4692 | rusty@rauhomegroup.com | DRE #02084462 | Move With Confidence.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* ============================================
+     HERO — Split Layout, Solid Navy
+     ============================================ */
+  .hv-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark, #0F1720) 100%);
+    padding: 8rem 0 var(--spacing-xl);
+    color: var(--color-white);
+  }
+
+  .hv-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+  }
+
+  .hv-hero-content {
+    max-width: 560px;
+  }
+
+  .hv-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
+  }
+
+  .hv-hero-title .accent {
+    color: var(--color-secondary);
+    font-style: italic;
+  }
+
+  .hv-hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .hv-video-placeholder {
+    margin-top: var(--spacing-md);
+    aspect-ratio: 16 / 9;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+
+  /* ============================================
+     FORM CARD
+     ============================================ */
+  .hv-form-card {
+    background: var(--color-white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hv-form-card .valuation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hv-form-card .form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-primary);
+    transition: var(--transition-fast);
+    background: var(--color-white);
+  }
+
+  .hv-form-card .form-group input::placeholder {
+    color: var(--color-gray);
+  }
+
+  .hv-form-card .form-group input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(201, 168, 105, 0.2);
+  }
+
+  .hv-submit {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 1.1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: 100%;
+  }
+
+  .hv-submit:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .hv-submit:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 3px;
+  }
+
+  .hv-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Trust Indicators */
+  .hv-trust-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-light-gray);
+  }
+
+  .hv-trust-indicators span {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hv-trust-indicators i {
+    color: var(--color-success, #10B981);
+    font-size: 0.75rem;
+  }
+
+  /* Form Success / Error */
+  .hv-form-success {
+    text-align: center;
+    padding: var(--spacing-md) 0;
+  }
+
+  .hv-success-icon {
+    font-size: 3rem;
+    color: var(--color-success, #10B981);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .hv-success-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .hv-success-text {
+    color: var(--color-gray);
+    line-height: 1.7;
+  }
+
+  .hv-form-error {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 8px;
+  }
+
+  .hv-form-error p {
+    color: var(--color-error, #EF4444);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hv-form-error a {
+    color: var(--color-error, #EF4444);
+    font-weight: 600;
+  }
+
+  /* ============================================
+     CHECKLIST SECTION
+     ============================================ */
+  .hv-checklist {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hv-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-gray);
+  }
+
+  .hv-checklist li strong {
+    color: var(--color-primary);
+  }
+
+  .hv-check-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--color-secondary);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  /* ============================================
+     TESTIMONIALS GRID (static, not slider)
+     ============================================ */
+  .hv-testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+  }
+
+  /* ============================================
+     ABOUT SECTION
+     ============================================ */
+  .hv-about-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+  }
+
+  .hv-about-photo {
+    width: 280px;
+    height: 340px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid var(--color-secondary);
+  }
+
+  .hv-about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hv-about-text p {
+    color: var(--color-gray);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.05rem;
+  }
+
+  .hv-about-text p:last-child {
+    margin-bottom: 0;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+
+  /* ============================================
+     FAQ ACCORDION
+     ============================================ */
+  .hv-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hv-faq-item {
+    border-bottom: 1px solid var(--color-light-gray);
+  }
+
+  .hv-faq-item:first-child {
+    border-top: 1px solid var(--color-light-gray);
+  }
+
+  .hv-faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    text-align: left;
+    transition: color var(--transition-fast);
+    gap: 1rem;
+  }
+
+  .hv-faq-question:hover {
+    color: var(--color-secondary);
+  }
+
+  .hv-faq-question:focus-visible {
+    outline: 3px solid var(--focus-ring, var(--color-secondary));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .hv-faq-chevron {
+    font-size: 0.85rem;
+    color: var(--color-secondary);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .hv-faq-item.active .hv-faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .hv-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 0;
+  }
+
+  .hv-faq-item.active .hv-faq-answer {
+    max-height: 300px;
+    padding: 0 0 1.5rem 0;
+  }
+
+  .hv-faq-answer p {
+    color: var(--color-gray);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  /* ============================================
+     FINAL CTA — Navy Background
+     ============================================ */
+  .hv-final-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark, #0F1720) 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .hv-final-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .hv-final-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 300;
+  }
+
+  .hv-form-card-bottom {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ============================================
+     LEGAL BAR
+     ============================================ */
+  .hv-legal-bar {
+    background: var(--color-dark, #0F1720);
+    padding: 1rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hv-legal-bar p {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.02em;
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 900px) {
+    .hv-hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .hv-hero-content {
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .hv-hero-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hv-video-placeholder {
+      display: none;
+    }
+
+    .hv-about-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hv-about-photo {
+      width: 200px;
+      height: 240px;
+      margin: 0 auto;
+    }
+
+    .hv-about-text .section-title {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hv-hero {
+      padding: 7rem 0 var(--spacing-lg);
+    }
+
+    .hv-testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hv-checklist li {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hv-hero-title {
+      font-size: 2rem;
+    }
+
+    .hv-form-card {
+      padding: 1.5rem;
+    }
+
+    .hv-trust-indicators span {
+      font-size: 0.8rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // --- UTM Parameter Capture ---
+    function getUTMParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        utm_content: params.get('utm_content') || ''
+      };
+    }
+
+    // --- Form Submission Handler ---
+    function handleFormSubmit(formEl) {
+      formEl.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const card = formEl.closest('.hv-form-card');
+        const successEl = card.querySelector('.hv-form-success');
+        const errorEl = card.querySelector('.hv-form-error');
+        const submitBtn = formEl.querySelector('.hv-submit');
+        const nameInput = formEl.querySelector('input[name="first_name"]');
+
+        // Reset error state
+        errorEl.style.display = 'none';
+
+        // Basic validation
+        const inputs = formEl.querySelectorAll('input[required]');
+        let valid = true;
+        inputs.forEach(input => {
+          if (!input.value.trim()) {
+            valid = false;
+            input.style.borderColor = 'var(--color-error, #EF4444)';
+          } else {
+            input.style.borderColor = 'var(--color-light-gray)';
+          }
+        });
+
+        if (!valid) return;
+
+        // Disable button
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+
+        const utms = getUTMParams();
+        const formData = new FormData(formEl);
+        const payload = {
+          first_name: formData.get('first_name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          property_address: formData.get('property_address'),
+          source: 'home-valuation',
+          funnel_stage: 'bofu-lead',
+          utm_source: utms.utm_source,
+          utm_medium: utms.utm_medium,
+          utm_campaign: utms.utm_campaign,
+          utm_content: utms.utm_content
+        };
+
+        try {
+          const response = await fetch('/api/leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) throw new Error('Submission failed');
+
+          // Success
+          formEl.style.display = 'none';
+          successEl.style.display = 'block';
+          successEl.querySelector('.hv-success-name').textContent = payload.first_name;
+
+          // Fire Meta Pixel event
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead', {
+              content_name: 'Home Valuation',
+              content_category: 'BOFU'
+            });
+          }
+        } catch (err) {
+          // Error
+          errorEl.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Get My Free Home Valuation';
+        }
+      });
+    }
+
+    // Initialize both forms
+    document.querySelectorAll('.valuation-form').forEach(handleFormSubmit);
+
+    // --- FAQ Accordion ---
+    const faqItems = document.querySelectorAll('.hv-faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.hv-faq-question');
+
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        // Close all other items
+        faqItems.forEach(other => {
+          other.classList.remove('active');
+          other.querySelector('.hv-faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle current item
+        if (!isActive) {
+          item.classList.add('active');
+          question.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>
