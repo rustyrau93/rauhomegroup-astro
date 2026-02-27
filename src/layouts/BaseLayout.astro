@@ -92,20 +92,22 @@ import '../styles/luxury-effects.css';
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
 
-  <!-- JSON-LD Structured Data -->
+  <!-- JSON-LD Structured Data — Expanded for GEO (AI Search Optimization) -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Rusty Rau",
     "alternateName": "Rau Home Group",
-    "description": "San Diego Real Estate Expert. Born and raised in San Diego with 8 years of experience helping buyers and sellers achieve their real estate goals.",
+    "description": "Born and raised in San Diego, Rusty Rau is the founder of Rau Home Group and a top 5% San Diego real estate agent with 100% 5-star reviews across 50+ transactions. Specializing in first-time homebuyers, military and veteran families (VA loans), luxury homes from La Jolla to Rancho Santa Fe, and investment properties across San Diego County. With 6+ years of experience and $55M+ in career sales volume, Rusty brings deep local knowledge of every San Diego neighborhood.",
     "url": "https://rauhomegroup.com",
     "telephone": "+1-858-204-4692",
     "email": "rusty@rauhomegroup.com",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "1420 Kettner Blvd, Ste 385",
       "addressLocality": "San Diego",
       "addressRegion": "CA",
+      "postalCode": "92101",
       "addressCountry": "US"
     },
     "geo": {
@@ -113,25 +115,53 @@ import '../styles/luxury-effects.css';
       "latitude": 32.7157,
       "longitude": -117.1611
     },
-    "areaServed": {
-      "@type": "City",
-      "name": "San Diego",
-      "sameAs": "https://en.wikipedia.org/wiki/San_Diego"
-    },
-    "priceRange": "$$-$$$$",
+    "areaServed": [
+      { "@type": "City", "name": "San Diego", "sameAs": "https://en.wikipedia.org/wiki/San_Diego" },
+      { "@type": "Neighborhood", "name": "La Jolla", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Del Mar", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Carmel Valley", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Rancho Santa Fe", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "North Park", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Pacific Beach", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Coronado", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Hillcrest", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Downtown San Diego", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Mission Hills", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Scripps Ranch", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Rancho Bernardo", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Poway", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Escondido", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Encinitas", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Chula Vista", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Point Loma", "containedInPlace": { "@type": "City", "name": "San Diego" } },
+      { "@type": "Neighborhood", "name": "Ocean Beach", "containedInPlace": { "@type": "City", "name": "San Diego" } }
+    ],
+    "priceRange": "$500K-$3M+",
     "image": "https://rauhomegroup.com/images/rusty-headshot.jpg",
     "sameAs": [
-      "https://www.instagram.com/rustyrau_sdrealtor/",
-      "https://www.linkedin.com/in/rusty-rau-558b7395"
+      "https://www.instagram.com/rustyrausd/",
+      "https://www.linkedin.com/in/rusty-rau-558b7395",
+      "https://www.zillow.com/profile/Rusty%20Rau",
+      "https://www.realtor.com/realestateagents/60ca7d01661a5b0012086f21",
+      "https://www.facebook.com/rustyraurealtor/",
+      "https://www.yelp.com/biz/rusty-rau-san-diego"
     ],
     "knowsAbout": [
-      "San Diego Real Estate",
-      "Home Buying",
-      "Home Selling",
-      "Luxury Homes",
-      "Investment Properties",
-      "First-Time Homebuyers",
-      "Military/Veterans Real Estate"
+      "San Diego real estate market",
+      "First-time homebuyer guidance in San Diego",
+      "VA loans and military home buying in San Diego",
+      "Luxury real estate in La Jolla and Del Mar",
+      "San Diego investment properties",
+      "New construction homes San Diego",
+      "San Diego neighborhood market analysis",
+      "Home selling strategy and pricing",
+      "Relocating to San Diego",
+      "San Diego school districts and family neighborhoods",
+      "Carmel Valley real estate",
+      "Rancho Bernardo homes for sale",
+      "North Park and Hillcrest urban living",
+      "Coronado real estate market",
+      "Real estate negotiation"
     ],
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",
@@ -142,7 +172,69 @@ import '../styles/luxury-effects.css';
         "name": "California Department of Real Estate"
       },
       "identifier": "02084462"
-    }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "50",
+      "bestRating": "5"
+    },
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Buyer's Agent Services",
+          "description": "Full-service buyer representation in San Diego including property search, negotiation, and closing support for first-time buyers, military families, and investors"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Listing Agent Services",
+          "description": "Strategic home selling with professional photography, digital marketing, staging guidance, and expert pricing for maximum sale price"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Free Home Valuation",
+          "description": "Complimentary market analysis for San Diego homeowners curious about their property value in today's market"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "VA Loan Home Buying Assistance",
+          "description": "Specialized support for active military, veterans, and military families using VA loans to purchase homes in San Diego"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Investment Property Consulting",
+          "description": "Analysis and acquisition support for San Diego rental properties and real estate investment opportunities"
+        }
+      }
+    ],
+    "memberOf": {
+      "@type": "Organization",
+      "name": "Real Broker",
+      "url": "https://www.onereal.com"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "California State University San Marcos"
+    },
+    "award": [
+      "Top 5% San Diego Real Estate Agent",
+      "100% 5-Star Client Reviews"
+    ],
+    "slogan": "San Diego born. San Diego built."
   })} />
 </head>
 <body>

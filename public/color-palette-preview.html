@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rau Home Group — Color Palette v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #f5f5f0; color: #1A2332; padding: 40px 20px; }
+.container { max-width: 1100px; margin: 0 auto; }
+h1 { font-family: 'Playfair Display', serif; font-size: 36px; margin-bottom: 8px; }
+.subtitle { color: #6B7280; font-size: 16px; margin-bottom: 48px; }
+h2 { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 6px; }
+h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #6B7280; margin-bottom: 16px; }
+
+.section {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.section.current { border: 2px dashed #E5E7EB; background: #FAFAFA; }
+.section.recommended { border: 2px solid #C9A869; }
+
+.badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-left: 12px; position: relative; top: -4px; }
+.badge-current { background: #FEF3C7; color: #92400E; }
+.badge-rec { background: #D1FAE5; color: #065F46; }
+
+.desc { color: #6B7280; font-size: 14px; margin-bottom: 32px; line-height: 1.6; max-width: 800px; }
+
+/* Palette strip */
+.palette-strip {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.palette-color {
+  flex: 1;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 8px;
+  position: relative;
+}
+.palette-color .label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+.palette-color .hex {
+  font-size: 10px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  opacity: 0.8;
+}
+.light-text .label, .light-text .hex { color: #fff; }
+.dark-text .label, .dark-text .hex { color: #1A2332; }
+
+/* Role table */
+.role-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 32px;
+}
+.role-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6B7280;
+  padding: 8px 12px;
+  border-bottom: 2px solid #E5E7EB;
+}
+.role-table td {
+  padding: 10px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid #F3F4F6;
+  vertical-align: middle;
+}
+.role-table tr:last-child td { border-bottom: none; }
+.color-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.role-name { font-weight: 600; color: #1A2332; }
+.role-where { color: #6B7280; }
+
+/* Preview section */
+.preview-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 12px;
+}
+
+/* Card preview styles */
+.preview-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.card-hero { padding: 28px 24px; }
+.card-hero h4 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 4px; }
+.card-hero p { font-size: 13px; opacity: 0.8; }
+.card-body { padding: 20px 24px; }
+.card-body p { font-size: 13px; line-height: 1.6; margin-bottom: 16px; }
+.card-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+.card-feature { display: flex; align-items: center; gap: 10px; padding: 10px 0; font-size: 13px; }
+.card-feature .check { font-size: 14px; font-weight: 700; }
+.card-testimonial { padding: 28px 24px; }
+.card-testimonial .quote-mark { font-size: 32px; line-height: 1; margin-bottom: 8px; }
+.card-testimonial blockquote { font-style: italic; font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+.card-testimonial .author { font-size: 12px; font-weight: 600; }
+.card-testimonial .location { font-size: 11px; }
+
+/* Comparison */
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.comparison-card {
+  background: white;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.comparison-card h3 { margin-bottom: 8px; }
+.comparison-card p { font-size: 13px; color: #6B7280; line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .preview-row { grid-template-columns: 1fr; }
+  .comparison { grid-template-columns: 1fr; }
+  .palette-color { min-height: 80px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Color Palette — Refined</h1>
+<p class="subtitle">5-6 shades total. Every color has one clear job. No orphans.</p>
+
+<!-- CURRENT -->
+<div class="section current">
+  <h2>What We Have Now <span class="badge badge-current">Current</span></h2>
+  <p class="desc">3 functional colors. Navy does everything dark. Gold does everything accent. White does everything light. No in-between = flat.</p>
+
+  <div class="palette-strip">
+    <div class="palette-color light-text" style="background:#1A2332;">
+      <div class="label">Navy</div>
+      <div class="hex">#1A2332</div>
+    </div>
+    <div class="palette-color light-text" style="background:#C9A869;">
+      <div class="label">Gold</div>
+      <div class="hex">#C9A869</div>
+    </div>
+    <div class="palette-color dark-text" style="background:#FFFFFF; border: 1px solid #E5E7EB;">
+      <div class="label">White</div>
+      <div class="hex">#FFFFFF</div>
+    </div>
+  </div>
+</div>
+
+<!-- OPTION A: 5 Shades -->
+<div class="section recommended">
+  <h2>Option A: The Starting Five <span class="badge badge-rec">Recommended</span></h2>
+  <p class="desc">5 total shades. Your 2 core colors + 3 supporting shades that each solve a specific problem on the site. Clean, tight, zero waste.</p>
+
+  <div class="palette-strip">
+    <div class="palette-color light-text" style="background:#0D1117;">
+      <div class="label">Deep Navy</div>
+      <div class="hex">#0D1117</div>
+    </div>
+    <div class="palette-color light-text" style="background:#1A2332;">
+      <div class="label">Navy</div>
+      <div class="hex">#1A2332</div>
+    </div>
+    <div class="palette-color light-text" style="background:#C9A869;">
+      <div class="label">Gold</div>
+      <div class="hex">#C9A869</div>
+    </div>
+    <div class="palette-color dark-text" style="background:#F0E2C4;">
+      <div class="label">Soft Gold</div>
+      <div class="hex">#F0E2C4</div>
+    </div>
+    <div class="palette-color dark-text" style="background:#F3F5F8;">
+      <div class="label">Ice</div>
+      <div class="hex">#F3F5F8</div>
+    </div>
+  </div>
+
+  <table class="role-table">
+    <thead>
+      <tr><th>Color</th><th>Role</th><th>Where It Goes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="color-dot" style="background:#0D1117;"></span><span class="role-name">Deep Navy</span></td>
+        <td>Depth layer</td>
+        <td class="role-where">Footer, dark hero overlays, gradient bottoms. Creates separation from main navy.</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#1A2332;"></span><span class="role-name">Navy</span></td>
+        <td>Primary (unchanged)</td>
+        <td class="role-where">Hero sections, headings, body text, primary buttons on light BG, nav bar.</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#C9A869;"></span><span class="role-name">Gold</span></td>
+        <td>Accent (unchanged)</td>
+        <td class="role-where">CTA buttons, icons, highlights, hover states, links, active indicators.</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#F0E2C4;"></span><span class="role-name">Soft Gold</span></td>
+        <td>Warm highlight</td>
+        <td class="role-where">Icon backgrounds, feature card accent strips, testimonial card BG, tag/badge fills.</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#F3F5F8;"></span><span class="role-name">Ice</span></td>
+        <td>Cool surface</td>
+        <td class="role-where">Alternating section backgrounds, card fills, input field BG, table row stripes.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>How it looks in practice</h3>
+  <div class="preview-row">
+    <!-- Hero Card -->
+    <div class="preview-card">
+      <div class="card-hero" style="background: linear-gradient(135deg, #1A2332 0%, #0D1117 100%); color: white;">
+        <h4 style="color:white;">Your Home's Value</h4>
+        <p style="color: rgba(255,255,255,0.7);">Not the Zillow number — the real one.</p>
+      </div>
+      <div class="card-body" style="background: white;">
+        <p style="color:#1A2332;">A personalized CMA from someone who knows your neighborhood.</p>
+        <button class="card-btn" style="background:#C9A869; color:white;">Get Free Valuation</button>
+      </div>
+    </div>
+    <!-- Feature Card -->
+    <div class="preview-card" style="background: #F3F5F8;">
+      <div style="padding: 28px 24px;">
+        <div class="card-feature">
+          <span class="check" style="color:#C9A869; background:#F0E2C4; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center;">✓</span>
+          <strong style="color:#1A2332;">Comparable sales analysis</strong>
+        </div>
+        <div class="card-feature">
+          <span class="check" style="color:#C9A869; background:#F0E2C4; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center;">✓</span>
+          <strong style="color:#1A2332;">Current market conditions</strong>
+        </div>
+        <div class="card-feature">
+          <span class="check" style="color:#C9A869; background:#F0E2C4; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center;">✓</span>
+          <strong style="color:#1A2332;">Net proceeds estimate</strong>
+        </div>
+        <button class="card-btn" style="background:#1A2332; color:white; margin-top:16px;">Learn More</button>
+      </div>
+    </div>
+    <!-- Testimonial Card -->
+    <div class="preview-card card-testimonial" style="background:#F0E2C4;">
+      <div class="quote-mark" style="color:#C9A869;">❝</div>
+      <blockquote style="color:#1A2332;">"My first two bids came in over asking within five days. I owe that all to Rusty."</blockquote>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:36px; height:36px; border-radius:50%; background:#C9A869; display:flex; align-items:center; justify-content:center; color:white; font-weight:600; font-size:14px;">P</div>
+        <div>
+          <div class="author" style="color:#1A2332;">Paul S.</div>
+          <div class="location" style="color:#0D1117; opacity:0.6;">Oceanside</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OPTION B: 6 Shades -->
+<div class="section">
+  <h2>Option B: The Six Pack</h2>
+  <p class="desc">6 total shades. Same 5 as Option A + one more navy mid-tone for body text and secondary headings. Gives you more typographic range — headings in dark navy, body text in a softer navy so the page breathes better.</p>
+
+  <div class="palette-strip">
+    <div class="palette-color light-text" style="background:#0D1117;">
+      <div class="label">Deep Navy</div>
+      <div class="hex">#0D1117</div>
+    </div>
+    <div class="palette-color light-text" style="background:#1A2332;">
+      <div class="label">Navy</div>
+      <div class="hex">#1A2332</div>
+    </div>
+    <div class="palette-color light-text" style="background:#2A3A50;">
+      <div class="label">Slate</div>
+      <div class="hex">#2A3A50</div>
+    </div>
+    <div class="palette-color light-text" style="background:#C9A869;">
+      <div class="label">Gold</div>
+      <div class="hex">#C9A869</div>
+    </div>
+    <div class="palette-color dark-text" style="background:#F0E2C4;">
+      <div class="label">Soft Gold</div>
+      <div class="hex">#F0E2C4</div>
+    </div>
+    <div class="palette-color dark-text" style="background:#F3F5F8;">
+      <div class="label">Ice</div>
+      <div class="hex">#F3F5F8</div>
+    </div>
+  </div>
+
+  <table class="role-table">
+    <thead>
+      <tr><th>Color</th><th>Role</th><th>Where It Goes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="color-dot" style="background:#0D1117;"></span><span class="role-name">Deep Navy</span></td>
+        <td>Depth layer</td>
+        <td class="role-where">Footer, dark hero overlays, gradient bottoms.</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#1A2332;"></span><span class="role-name">Navy</span></td>
+        <td>Headlines & hero</td>
+        <td class="role-where">H1/H2 headings, hero sections, nav bar, primary emphasis.</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#2A3A50;"></span><span class="role-name">Slate</span></td>
+        <td>Body text & secondary</td>
+        <td class="role-where">Paragraph text, H3/H4 subheadings, captions, form labels. Softer than navy so long text is easier to read.</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#C9A869;"></span><span class="role-name">Gold</span></td>
+        <td>Accent (unchanged)</td>
+        <td class="role-where">CTA buttons, icons, highlights, hover states, links, active indicators.</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#F0E2C4;"></span><span class="role-name">Soft Gold</span></td>
+        <td>Warm highlight</td>
+        <td class="role-where">Icon backgrounds, testimonial cards, tag/badge fills, feature accent strips.</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#F3F5F8;"></span><span class="role-name">Ice</span></td>
+        <td>Cool surface</td>
+        <td class="role-where">Alternating section BG, card fills, input fields, table row stripes.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>How it looks in practice</h3>
+  <div class="preview-row">
+    <!-- Hero Card -->
+    <div class="preview-card">
+      <div class="card-hero" style="background: linear-gradient(135deg, #1A2332 0%, #0D1117 100%); color: white;">
+        <h4 style="color:white;">Your Home's Value</h4>
+        <p style="color: rgba(255,255,255,0.7);">Not the Zillow number — the real one.</p>
+      </div>
+      <div class="card-body" style="background: white;">
+        <p style="color:#2A3A50;">A personalized CMA from someone who knows your neighborhood block by block.</p>
+        <button class="card-btn" style="background:#C9A869; color:white;">Get Free Valuation</button>
+      </div>
+    </div>
+    <!-- Feature Card -->
+    <div class="preview-card" style="background: #F3F5F8;">
+      <div style="padding: 28px 24px;">
+        <div class="card-feature">
+          <span class="check" style="color:#C9A869; background:#F0E2C4; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center;">✓</span>
+          <strong style="color:#1A2332;">Comparable sales analysis</strong>
+        </div>
+        <div class="card-feature">
+          <span class="check" style="color:#C9A869; background:#F0E2C4; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center;">✓</span>
+          <strong style="color:#1A2332;">Current market conditions</strong>
+        </div>
+        <div class="card-feature">
+          <span class="check" style="color:#C9A869; background:#F0E2C4; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center;">✓</span>
+          <strong style="color:#1A2332;">Net proceeds estimate</strong>
+        </div>
+        <p style="color:#2A3A50; margin-top:12px; font-size:13px;">Everything you need to make an informed decision about your next move.</p>
+        <button class="card-btn" style="background:#1A2332; color:white; margin-top:12px;">Learn More</button>
+      </div>
+    </div>
+    <!-- Testimonial Card -->
+    <div class="preview-card card-testimonial" style="background:#F0E2C4;">
+      <div class="quote-mark" style="color:#C9A869;">❝</div>
+      <blockquote style="color:#2A3A50;">"My first two bids came in over asking within five days. I owe that all to Rusty."</blockquote>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:36px; height:36px; border-radius:50%; background:#C9A869; display:flex; align-items:center; justify-content:center; color:white; font-weight:600; font-size:14px;">P</div>
+        <div>
+          <div class="author" style="color:#1A2332;">Paul S.</div>
+          <div class="location" style="color:#2A3A50;">Oceanside</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM LINE -->
+<div class="section" style="background: #1A2332; color: white;">
+  <h2 style="color: white;">The Difference</h2>
+  <div class="comparison" style="margin-top: 20px;">
+    <div class="comparison-card" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);">
+      <h3 style="color: #C9A869; font-size: 15px; text-transform: none; letter-spacing: 0;">Option A — 5 shades</h3>
+      <p style="color: rgba(255,255,255,0.8);">Minimal. Adds depth (dark navy) + warmth (soft gold) + breathing room (ice). Body text stays navy. Tight and clean. <strong style="color:#C9A869;">Start here if you want zero risk.</strong></p>
+    </div>
+    <div class="comparison-card" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);">
+      <h3 style="color: #C9A869; font-size: 15px; text-transform: none; letter-spacing: 0;">Option B — 6 shades</h3>
+      <p style="color: rgba(255,255,255,0.8);">Same as A + Slate for body text. Headlines pop more when body text is a softer navy. Easier on the eyes for long-form pages. <strong style="color:#C9A869;">Better if we're building content-heavy pages.</strong></p>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
